@@ -22,14 +22,31 @@ class StudentsController < ApplicationController
  
   end
 
+  def edit
+    @student = Student.find(params[:id])
+  end
+
+  def update
+    @student = Student.find(params[:id])
+    if @student.update(student_params)
+      redirect_to(student_path(@student.id))
+    else 
+      render :edit
+    end
+  end
+
   def destroy
+    Student.find(params[:id]).destroy
+    redirect_to(students_path)
   end
 
   private
 
   def student_params
-    params.require(:student).permit(:name, :course)
+    params.require(:student).permit(:name, :course, :id)
   end
+
+
 
 
 end

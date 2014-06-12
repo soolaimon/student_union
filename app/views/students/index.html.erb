@@ -2,7 +2,18 @@
 
 <%= link_to "Add a student", new_student_path %>
 
-<% @students.each do |student| %>
-<p><%= link_to student.name, student_path(student.id) %></p>
-
-<% end %>
+<table>
+  <thead>
+    <tr><td>Student</td><td>Course</td></tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+    <tr>
+      <td><%= link_to student.name, student_path(student.id) %></td>
+      <td><%= student.course %></td>    
+      <td><%= link_to "Edit", edit_student_path(student.id) %></td>
+      <td><%= link_to "Delete", student_path(student.id), method: :delete  %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
