@@ -1,0 +1,15 @@
+<h1>New Student Info</h1>
+
+<%= form_for(@student) do |f| %>
+
+<div>
+
+  <%=f.label(:name)%>
+  <%=f.text_field(:name)%>
+  <%=f.label(:course)%>
+  <%=f.text_field(:course)%>
+</div>
+  <%=f.submit("Save Student")%>
+<% end %>
+
+<%= link_to "Back to students", students_path %>
